@@ -51,8 +51,9 @@
                 </tr>
             </thead>
             <tbody>
-                <tr class="contents-tr" th:each="post : ${list}" th:onclick="'location.href=\'/view/'+${post.idx}+'\''">
-                    <td th:text="${post.idx}"></td>
+                <tr class="contents-tr" th:each="post, i : ${list}" th:onclick="'location.href=\'/view/'+${post.idx}+'\''">
+<!--                    <td th:text="${post.idx}"></td>-->
+                    <td th:text="${i.count}"></td> <!-- 순서 거꾸로 해야함.-->
                     <td th:text="${post.title}"></td>
                     <td th:text="${post.writer}"></td>
                     <td th:text="${post.time}"></td>

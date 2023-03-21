@@ -23,6 +23,16 @@ public class HomeController {
         return "index";
     }
 
+    @GetMapping("/login")
+    public String login() {
+        return "login";
+    }
+
+    @GetMapping("/join")
+    public String join() {
+        return "join";
+    }
+
     @GetMapping("/write")
     public ModelAndView write() {
         ModelAndView mv = new ModelAndView("write");

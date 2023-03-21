@@ -17,12 +17,12 @@ public class NoticeBoardService {
     @Autowired
     public void setNoticeBoardRepository(NoticeBoardRepository noticeBoardRepository) { this.noticeBoardRepository = noticeBoardRepository; }
 
-    @PostConstruct
-    public void prepare() {
-        addWrite("제목 1", "내용 1", "글쓴이 1");
-        addWrite("제목 2", "내용 2", "글쓴이 2");
-        addWrite("제목 3", "내용 3", "글쓴이 3");
-    }
+//    @PostConstruct
+//    public void prepare() {
+//        addWrite("제목 1", "내용 1", "글쓴이 1");
+//        addWrite("제목 2", "내용 2", "글쓴이 2");
+//        addWrite("제목 3", "내용 3", "글쓴이 3");
+//    }
 
     public void addWrite(String title, String contents, String writer) {
         NoticeBoardEntity write = new NoticeBoardEntity();
