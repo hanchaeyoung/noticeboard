@@ -2,9 +2,12 @@ package spring.noticeboard.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import spring.noticeboard.entity.NoticeBoardEntity;
+import spring.noticeboard.entity.MemberEntity;
+import spring.noticeboard.repository.MemberRepository;
 import spring.noticeboard.service.NoticeBoardService;
 
 import java.util.ArrayList;
@@ -14,6 +17,9 @@ import java.util.List;
 public class HomeController {
 
     private NoticeBoardService noticeBoardService;
+
+    @Autowired
+    private MemberRepository memberRepository;
 
     @Autowired
     public void setNoticeBoardService(NoticeBoardService noticeBoardService) { this.noticeBoardService = noticeBoardService; }
@@ -32,6 +38,22 @@ public class HomeController {
     public String join() {
         return "join";
     }
+
+
+    @PostMapping("/signup")
+    public String signup(@RequestBody MemberEntity memberEntity) {
+        noticeBoardService.signup(memberEntity);
+        return "signup success";
+    }
+
+
+    @GetMapping("/members")
+    public String listMembers(Model model) {
+        List<MemberEntity> members = memberRepository.findAll();
+        model.addAttribute("members", members);
+        return "members";
+    }
+
 
     @GetMapping("/write")
     public ModelAndView write() {
