@@ -10,14 +10,15 @@ public class MemberEntity {
     private Long id;
     private String email;
     private String password;
-    private String name;
+    private String username;
 
     public MemberEntity() {}
 
-    public MemberEntity(String email, String password, String name) {
+    public MemberEntity(Long id, String email, String password, String username) {
+        this.id = id;
         this.email = email;
         this.password = password;
-        this.name = name;
+        this.username = username;
     }
 
     public Long getId() {
@@ -44,11 +45,11 @@ public class MemberEntity {
         this.password = password;
     }
 
-    public String getName() {
-        return name;
+    public String getUsername() {
+        return username;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setUsername(String username) {
+        this.username = username;
     }
 }

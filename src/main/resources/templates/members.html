@@ -5,8 +5,8 @@
   <title>Members</title>
 </head>
 <body>
-<h1>Members</h1>
-<table>
+<h1>멤버 리스트</h1>
+<table border="1px solid black">
   <thead>
   <tr>
     <th>ID</th>
@@ -17,7 +17,7 @@
   <tbody>
   <tr th:each="MemberEntity : ${members}">
     <td th:text="${MemberEntity.id}"></td>
-    <td th:text="${MemberEntity.name}"></td>
+    <td th:text="${MemberEntity.username}"></td>
     <td th:text="${MemberEntity.email}"></td>
   </tr>
   </tbody>

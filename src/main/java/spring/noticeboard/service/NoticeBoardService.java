@@ -32,8 +32,6 @@ public class NoticeBoardService {
         memberRepository.save(memberEntity);
     }
 
-
-
     public void addWrite(String title, String contents, String writer) {
         NoticeBoardEntity write = new NoticeBoardEntity();
         write.setTitle(title);

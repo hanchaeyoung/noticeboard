@@ -24,28 +24,13 @@ public class HomeController {
     @Autowired
     public void setNoticeBoardService(NoticeBoardService noticeBoardService) { this.noticeBoardService = noticeBoardService; }
 
+    // Get : 어떠한 정보를 가져와서 조회하기 위해 사용되는 방식
+    // Post : 데이터를 서버로 제출하여 추가 또는 수정하기 위해서 데이터를 전송하는 방식
+    
     @GetMapping("/")
     public String index() {
         return "index";
     }
-
-    @GetMapping("/login")
-    public String login() {
-        return "login";
-    }
-
-    @GetMapping("/join")
-    public String join() {
-        return "join";
-    }
-
-
-    @PostMapping("/signup")
-    public String signup(@RequestBody MemberEntity memberEntity) {
-        noticeBoardService.signup(memberEntity);
-        return "signup success";
-    }
-
 
     @GetMapping("/members")
     public String listMembers(Model model) {
@@ -53,7 +38,6 @@ public class HomeController {
         model.addAttribute("members", members);
         return "members";
     }
-
 
     @GetMapping("/write")
     public ModelAndView write() {
