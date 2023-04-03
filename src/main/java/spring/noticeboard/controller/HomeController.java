@@ -6,8 +6,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import spring.noticeboard.entity.NoticeBoardEntity;
-import spring.noticeboard.entity.MemberEntity;
-import spring.noticeboard.repository.MemberRepository;
+import spring.noticeboard.entity.UserEntity;
+import spring.noticeboard.repository.UserRepository;
 import spring.noticeboard.service.NoticeBoardService;
 
 import java.util.ArrayList;
@@ -19,7 +19,7 @@ public class HomeController {
     private NoticeBoardService noticeBoardService;
 
     @Autowired
-    private MemberRepository memberRepository;
+    private UserRepository userRepository;
 
     @Autowired
     public void setNoticeBoardService(NoticeBoardService noticeBoardService) { this.noticeBoardService = noticeBoardService; }
@@ -34,7 +34,7 @@ public class HomeController {
 
     @GetMapping("/members")
     public String listMembers(Model model) {
-        List<MemberEntity> members = memberRepository.findAll();
+        List<UserEntity> members = userRepository.findAll();
         model.addAttribute("members", members);
         return "members";
     }
