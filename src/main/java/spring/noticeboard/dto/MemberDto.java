@@ -4,7 +4,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import spring.noticeboard.entity.MemberEntity;
+import spring.noticeboard.domain.Member;
 
 @Getter
 @Setter
@@ -16,8 +16,8 @@ public class MemberDto {
     private String password;
     private String username;
 
-    public MemberEntity toEntity() {
-        return MemberEntity.builder()
+    public Member toEntity() {
+        return Member.builder()
                 .id(id)
                 .email(email)
                 .password(password)

@@ -3,7 +3,8 @@ package spring.noticeboard.entity;
 import lombok.*;
 import javax.persistence.*;
 
-@Entity(name = "member_entity")
+// @Entity(name = "member_entity")
+@Entity
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class MemberEntity {
