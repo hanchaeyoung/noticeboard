@@ -6,8 +6,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import spring.noticeboard.entity.NoticeBoardEntity;
-import spring.noticeboard.entity.UserEntity;
-import spring.noticeboard.repository.UserRepository;
+import spring.noticeboard.entity.MemberEntity;
+import spring.noticeboard.repository.MemberRepository;
 import spring.noticeboard.service.NoticeBoardService;
 
 import java.util.ArrayList;
@@ -19,7 +19,7 @@ public class HomeController {
     private NoticeBoardService noticeBoardService;
 
     @Autowired
-    private UserRepository userRepository;
+    private MemberRepository memberRepository;
 
     @Autowired
     public void setNoticeBoardService(NoticeBoardService noticeBoardService) { this.noticeBoardService = noticeBoardService; }
@@ -27,14 +27,14 @@ public class HomeController {
     // Get : 어떠한 정보를 가져와서 조회하기 위해 사용되는 방식
     // Post : 데이터를 서버로 제출하여 추가 또는 수정하기 위해서 데이터를 전송하는 방식
     
-    @GetMapping("/")
-    public String index() {
-        return "index";
-    }
+//    @GetMapping("/")
+//    public String index() {
+//        return "index";
+//    }
 
     @GetMapping("/members")
     public String listMembers(Model model) {
-        List<UserEntity> members = userRepository.findAll();
+        List<MemberEntity> members = memberRepository.findAll();
         model.addAttribute("members", members);
         return "members";
     }

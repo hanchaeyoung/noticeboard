@@ -3,8 +3,7 @@ package spring.noticeboard.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import spring.noticeboard.entity.NoticeBoardEntity;
-import spring.noticeboard.entity.UserEntity;
-import spring.noticeboard.repository.UserRepository;
+import spring.noticeboard.repository.MemberRepository;
 import spring.noticeboard.repository.NoticeBoardRepository;
 
 import java.time.LocalDate;
@@ -14,7 +13,7 @@ import java.util.Optional;
 @Service(value = "noticeBoardService")
 public class NoticeBoardService {
     private NoticeBoardRepository noticeBoardRepository;
-    private UserRepository userRepository;
+    private MemberRepository memberRepository;
 
     @Autowired
     public void setNoticeBoardRepository(NoticeBoardRepository noticeBoardRepository) { this.noticeBoardRepository = noticeBoardRepository; }
@@ -27,9 +26,9 @@ public class NoticeBoardService {
 //    }
 
 
-    public void signup(UserEntity userEntity) {
-        userRepository.save(userEntity);
-    }
+//    public void signup(UserEntity userEntity) {
+//        memberRepository.save(userEntity);
+//    } // 원래
 
     public void addWrite(String title, String contents, String writer) {
         NoticeBoardEntity write = new NoticeBoardEntity();
