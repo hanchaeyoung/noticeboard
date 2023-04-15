@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>자유게시판</title>
+    <style>
+<!--        @font-face {-->
+<!--            font-family: 'KCC-Ganpan';-->
+<!--            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302@1.0/KCC-Ganpan.woff2') format('woff2');-->
+<!--            font-weight: normal;-->
+<!--            font-style: normal;-->
+<!--        }-->
+
+<!--        @font-face {-->
+<!--            font-family: 'TheJamsil5Bold';-->
+<!--            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302_01@1.0/TheJamsil5Bold.woff2') format('woff2');-->
+<!--            font-weight: 700;-->
+<!--            font-style: normal;-->
+<!--        }-->
+
+
+        * {
+            margin: 0;
+        }
+
+        html,
+        body {
+            height: 100%;
+            padding: 0px;
+            margin: 0px;
+        }
+
+        header {
+            display: flex;
+            align-items: center;
+        }
+
+        nav {
+            margin-left: auto;
+
+        }
+
+        h1 {
+            display: inline-block;
+            vertical-align: middle;
+            color: white;
+            margin: 0.5rem;
+            padding: 0;
+            font-family: 'KCC-Ganpan';
+            font-size: 2rem;
+        }
+
+        nav {
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        li.icon {
+            flex-basis: 25%;
+        }
+
+        header {
+            height: 60px;
+            background-color: black;
+
+        }
+
+
+        .moveBtn {
+            display: block;
+            text-align: center;
+            text-decoration: none;
+            color: white;
+            font-size: 1.5rem;
+            margin-right: 20px;
+        }
+
+        header .moveBtn:hover {
+            background: rgb(82, 77, 77);
+            border-radius: 10px;
+        }
+
+
+        html {
+            box-sizing: border-box;
+        }
+
+        *,
+        *:before,
+        *:after {
+            box-sizing: inherit;
+        }
+
+        #wrap {
+            min-height: calc(100% - 120px);
+            padding: 30px;
+        }
+
+        footer {
+            text-align: center;
+            background-color: #e9eaed;
+            height: 60px;
+
+        }
+
+        footer h1 {
+            font-family: 'TheJamsil5Bold';
+            font-size: 1rem;
+            color: #c5c5c5;
+        }
+        footer nav{
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <a href="/">
+            <h1>자유게시판</h1>
+            <nav>
+                <ul>
+                    <li><p sec:authorize="isAnonymous()"><a th:href="@{/login}">로그인</a></p></li>
+                    <li><p sec:authorize="isAuthenticated()"><a th:href="@{/logout}">로그아웃</a></p></li>
+                    <li><p><a th:href="@{/user/add}">회원가입</a></p></li>
+                </ul>
+            </nav>
+        </a>
+    </header>
+</body>
+</html>
