@@ -7,6 +7,9 @@
     <title>Title</title>
 </head>
 <body>
+<!-- HEADER -->
+<div th:insert="common/header.html" id="header"></div>
+
     <form  action="/post" method="post">
         제목 : <input type="text" name="title"> <br>
 <!--        <span type="text" name="writer" sec:authentication="principal.user.name">XXX</span>-->
