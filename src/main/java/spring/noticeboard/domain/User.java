@@ -28,13 +28,14 @@ public class User {
 
     private Date withdrawTime;
 
-    public static User build(String email, String password, String name, int grade) {
+    // public static User build(String email, String password, String name, int grade) {
+    public static User build(String email, String password, String name) {
         User user = new User();
 
         user.setEmail(email);
         user.setPassword(password);
         user.setName(name);
-        user.setGrade(grade);
+        // user.setGrade(grade);
 
         return user;
     }

@@ -27,10 +27,11 @@ public class UserController {
     public String addSave(
             @RequestParam(value = "email") String email
             , @RequestParam(value = "password") String password
-            , @RequestParam(value = "name") String name
-            , @RequestParam(value = "grade") int grade) {
+            , @RequestParam(value = "name") String name) {
+//            , @RequestParam(value = "grade") int grade) {
 
-        User user = User.build(email, password, name, grade);
+        // User user = User.build(email, password, name, grade);
+        User user = User.build(email, password, name);
         userService.add(user);
 
         return "user/add-save";
