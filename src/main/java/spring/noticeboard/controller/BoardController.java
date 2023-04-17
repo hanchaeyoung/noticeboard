@@ -1,17 +1,24 @@
 package spring.noticeboard.controller;
 
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import spring.noticeboard.domain.User;
 import spring.noticeboard.dto.BoardDto;
 import spring.noticeboard.service.BoardService;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Controller
 @AllArgsConstructor
 public class BoardController {
+
+    @Autowired
+    private HttpSession httpSession;
+
     private BoardService boardService;
 
     /* 게시글 목록 */
@@ -42,6 +49,13 @@ public class BoardController {
     public String write() {
         return "board/write.html";
     }
+
+//    @GetMapping("/post")
+//    public String write(Model model) {
+//        User user = (User) httpSession.getAttribute("user");
+//        model.addAttribute("name", user.getName());
+//        return "board/write.html";
+//    }
 
     @PostMapping("/post")
     public String write(BoardDto boardDto) {

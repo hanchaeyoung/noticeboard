@@ -1,8 +1,10 @@
 package spring.noticeboard.config;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -16,18 +18,30 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http.csrf().disable();
         http.headers().frameOptions().disable();
         http.authorizeRequests()
-                .antMatchers("/**").permitAll()
-                // .antMatchers("/login").permitAll()
+                .antMatchers("/", "/login", "/user/add", "/css/**", "/js/**", "/bootstrap-5.3.0-alpha3-dist/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
-                // .loginPage("/user/login")
-                .defaultSuccessUrl("/").permitAll()
+                // .defaultSuccessUrl("/").permitAll()
                 .and()
                 .logout()
-                // .logoutSuccessUrl("/login")
                 .logoutSuccessUrl("/")
-                .permitAll();
+                .and()
+                .csrf().disable();
+
+
+//                .antMatchers("/**").permitAll()
+//                // .antMatchers("/login").permitAll()
+//                .anyRequest().authenticated()
+//                .and()
+//                .formLogin()
+//                // .loginPage("/user/login")
+//                .defaultSuccessUrl("/").permitAll()
+//                .and()
+//                .logout()
+//                // .logoutSuccessUrl("/login")
+//                .logoutSuccessUrl("/")
+//                .permitAll();
     }
 
 

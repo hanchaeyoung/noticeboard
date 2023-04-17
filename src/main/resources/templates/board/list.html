@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="ko" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="ko" xmlns:th="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
     <title>자유게시판</title>
@@ -11,20 +12,23 @@
 <div th:insert="common/header.html" id="header"></div>
 
 <div id="wrap" class="container" style="width: 60%">
-    <br><br>
+    <div style="margin: 60px"></div>
     <div id="con">
-        <!-- 검색 form -->
-        <form action="/board/search" method="GET">
-            <div>
-                <input class="form-control" aria-describedby="helpBlock" name="keyword" type="text" placeholder="검색어를 입력해주세요">
-                <button class="btn btn-default" style="border: 1px solid black">검색하기</button>
-            </div>
-        </form>
-        <br>
         <div>
-<!--            <a th:href="@{/post}">글쓰기</a>-->
-            <button class="btn btn-default" style="background-color: black; color: white;" onclick="location.href='http://localhost:8080/post'">글쓰기</button>
-            <table class="table table-striped">
+            <div style="text-align: right;">
+                <button sec:authorize="isAuthenticated()" class="btn btn-default" style="background-color: black; color: white;" onclick="location.href='http://localhost:8080/post'">글쓰기</button>
+            </div>
+            <div sec:authorize="isAuthenticated()">
+                <form action="/board/search" method="GET">
+                    <input aria-describedby="helpBlock" name="keyword" type="text" placeholder="검색어를 입력해주세요">
+                    <button style="border: 1px solid black">검색</button>
+                </form>
+            </div>
+        </div>
+        <br>
+
+        <div>
+            <table class="table">
                 <thead>
                 <tr>
                     <th class="one wide">번호</th>
