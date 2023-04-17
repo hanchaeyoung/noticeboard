@@ -21,7 +21,9 @@
             </div>
         </form>
         <br>
-        <div><a th:href="@{/post}">글쓰기</a>
+        <div>
+<!--            <a th:href="@{/post}">글쓰기</a>-->
+            <button class="btn btn-default" style="background-color: black; color: white;" onclick="location.href='http://localhost:8080/post'">글쓰기</button>
             <table class="table table-striped">
                 <thead>
                 <tr>
@@ -48,7 +50,6 @@
                     </td>
                     <td>
                         <span th:text="${#temporals.format(board.createdDate, 'yyyy-MM-dd HH:mm')}"></span>
-
                     </td>
                 </tr>
                 </tbody>
