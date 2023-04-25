@@ -5,7 +5,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import spring.noticeboard.domain.User;
 import spring.noticeboard.dto.BoardDto;
 import spring.noticeboard.service.BoardService;
 
@@ -32,7 +31,6 @@ public class BoardController {
 
         return "board/list.html";
     }
-
 
     /* 게시글 상세 */
     @GetMapping("/post/{no}")

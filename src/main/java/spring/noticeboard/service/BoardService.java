@@ -1,5 +1,6 @@
 package spring.noticeboard.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import spring.noticeboard.entity.BoardEntity;
 import spring.noticeboard.repository.BoardRepository;
 import spring.noticeboard.dto.BoardDto;
@@ -17,10 +18,12 @@ import java.util.Optional;
 @AllArgsConstructor
 @Service
 public class BoardService {
+
+    @Autowired
     private BoardRepository boardRepository;
 
-    private static final int BLOCK_PAGE_NUM_COUNT = 5;  // 블럭에 존재하는 페이지 번호 수
-    private static final int PAGE_POST_COUNT = 4;       // 한 페이지에 존재하는 게시글 수
+    private static final int BLOCK_PAGE_NUM_COUNT = 11;  // 블럭에 존재하는 페이지 번호 수 5
+    private static final int PAGE_POST_COUNT = 10;       // 한 페이지에 존재하는 게시글 수 4
 
     /*게시글 목록 가져옴*/
     @Transactional
