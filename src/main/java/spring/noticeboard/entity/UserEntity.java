@@ -26,11 +26,11 @@ public class UserEntity {
 
     private Date registerTime;
 
-    private Date lastLoginTime;
+//    private Date lastLoginTime;
 
     private boolean withrawed;
 
-    private Date withdrawTime;
+//    private Date withdrawTime;
 
     public static UserEntity build(User user) {
         UserEntity entity = new UserEntity();
@@ -41,9 +41,9 @@ public class UserEntity {
         entity.setName(user.getName());
         entity.setGrade(user.getGrade());
         entity.setRegisterTime(user.getRegisterTime());
-        entity.setLastLoginTime(user.getLastLoginTime());
+//        entity.setLastLoginTime(user.getLastLoginTime());
         entity.setWithrawed(user.isWithrawed());
-        entity.setWithdrawTime(user.getWithdrawTime());
+//        entity.setWithdrawTime(user.getWithdrawTime());
 
         return entity;
     }

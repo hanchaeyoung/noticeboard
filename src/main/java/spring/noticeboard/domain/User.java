@@ -22,11 +22,11 @@ public class User {
 
     private Date registerTime;
 
-    private Date lastLoginTime;
+//    private Date lastLoginTime;
 
     private boolean withrawed;
 
-    private Date withdrawTime;
+//    private Date withdrawTime;
 
     // public static User build(String email, String password, String name, int grade) {
     public static User build(String email, String password, String name) {
@@ -49,9 +49,9 @@ public class User {
         user.setName(entity.getName());
         user.setGrade(entity.getGrade());
         user.setRegisterTime(entity.getRegisterTime());
-        user.setLastLoginTime(entity.getLastLoginTime());
+//        user.setLastLoginTime(entity.getLastLoginTime());
         user.setWithrawed(entity.isWithrawed());
-        user.setWithdrawTime(entity.getWithdrawTime());
+//        user.setWithdrawTime(entity.getWithdrawTime());
 
         return user;
     }

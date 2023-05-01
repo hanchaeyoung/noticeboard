@@ -25,7 +25,6 @@
 
         nav {
             margin-left: auto;
-
         }
 
         h1 {
@@ -56,23 +55,9 @@
         header {
             height: 70px;
             background-color: black;
-
         }
 
 
-        .moveBtn {
-            display: block;
-            text-align: center;
-            text-decoration: none;
-            color: white;
-            font-size: 1.5rem;
-            margin-right: 20px;
-        }
-
-        header .moveBtn:hover {
-            background: rgb(82, 77, 77);
-            border-radius: 10px;
-        }
 
 
         html {
@@ -90,34 +75,30 @@
             padding: 30px;
         }
 
-        footer {
-            text-align: center;
-            height: 50px;
 
+
+        .link {
+            text-decoration-line: none;
+            color: white;
         }
 
-        footer h1 {
-            font-size: 1rem;
-            color: black;
-        }
-        footer nav{
-            padding: 10px;
+        .link:hover {
+            color: #E9E8E8;
         }
     </style>
 </head>
 
 <body>
     <header>
-        <a href="/">
-            <h1>자유게시판</h1>
-            <nav>
-                <ul>
-                    <li><p sec:authorize="isAnonymous()"><a th:href="@{/login}">로그인</a></p></li>
-                    <li><p sec:authorize="isAuthenticated()"><a th:href="@{/logout}">로그아웃</a></p></li>
-                    <li><p><a th:href="@{/user/add}">회원가입</a></p></li>
-                </ul>
-            </nav>
-        </a>
+        <a href="/"><h1>자유게시판</h1></a>
+        <nav>
+            <ul>
+                <li><p sec:authorize="isAnonymous()"><a th:href="@{/login}" class="link">로그인</a></p></li>&nbsp&nbsp
+                <li><p sec:authorize="isAnonymous()"><a th:href="@{/user/add}" class="link">회원가입</a></p></li>&nbsp&nbsp
+                <li><p sec:authorize="isAuthenticated()"><a th:href="@{/logout}" class="link">로그아웃</a></p></li>&nbsp&nbsp
+                <li><p sec:authorize="isAuthenticated()"><a th:href="@{/user/mypage}" class="link">마이페이지</a></p></li>&nbsp&nbsp
+            </ul>
+        </nav>
     </header>
 </body>
 </html>

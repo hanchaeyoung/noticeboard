@@ -25,9 +25,9 @@ public class MyUserDetails implements UserDetails {
 
         if (user.getGrade() == 9) {
             authorities.add(new SimpleGrantedAuthority("ROLE_ADMIN"));
+        } else {
+            authorities.add(new SimpleGrantedAuthority("ROLE_USER"));
         }
-
-        authorities.add(new SimpleGrantedAuthority("ROLE_USER"));
 
         return authorities;
     }
