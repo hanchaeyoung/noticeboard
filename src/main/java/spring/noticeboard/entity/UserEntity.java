@@ -20,6 +20,7 @@ public class UserEntity {
 
     private String password;
 
+    @Column(length = 100, nullable = false)
     private String name;
 
     private int grade;

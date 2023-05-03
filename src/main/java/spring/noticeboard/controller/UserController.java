@@ -1,6 +1,7 @@
 package spring.noticeboard.controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import spring.noticeboard.domain.User;
 import spring.noticeboard.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +19,6 @@ public class UserController {
     public void setUserService(UserService userService) {
         this.userService = userService;
     }
-
     @RequestMapping("/add")
     public String add() {
         return "user/add";

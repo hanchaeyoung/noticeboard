@@ -2,9 +2,12 @@ package spring.noticeboard.controller;
 
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import spring.noticeboard.domain.User;
 import spring.noticeboard.dto.BoardDto;
 import spring.noticeboard.service.BoardService;
 
@@ -55,10 +58,19 @@ public class BoardController {
 //        return "board/write.html";
 //    }
 
-    @PostMapping("/post")
-    public String write(BoardDto boardDto) {
-        boardService.savePost(boardDto);
+//    @PostMapping("/post")
+//    public String write(@AuthenticationPrincipal User user, BoardDto boardDto) {
+//        boardDto.setWriter(user.getName());
+//        boardService.savePost(boardDto);
+//
+//        return "redirect:/";
+//    }
 
+    @PostMapping("/post")
+    public String write(BoardDto boardDto, Authentication authentication) {
+        String writer = authentication.getName(); // 현재 인증된 사용자의 이름을 가져옴
+        boardDto.setWriter(writer); // 작성자를 자동으로 입력함
+        boardService.savePost(boardDto); // 게시글을 저장함
         return "redirect:/";
     }
 

@@ -11,10 +11,9 @@
 <!-- HEADER -->
 <div th:insert="common/header.html" id="header"></div>
 
-    <form  action="/post" method="post">
+    <form action="/post" method="post">
         제목 : <input type="text" name="title"> <br>
-<!--        <span type="text" name="writer" sec:authentication="principal.user.name">XXX</span>-->
-        작성자 : <input type="text" name="writer"> <br>
+        작성자 : <input type="text" name="writer" th:value="${#authentication.principal.user.name}" readonly><br>
         <textarea name="content"></textarea><br>
 
         <input type="submit" value="등록">
