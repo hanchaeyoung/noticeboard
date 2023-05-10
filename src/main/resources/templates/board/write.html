@@ -13,7 +13,7 @@
 
     <form action="/post" method="post">
         제목 : <input type="text" name="title"> <br>
-        작성자 : <input type="text" name="writer" th:value="${#authentication.principal.user.name}" readonly><br>
+        작성자 : <input type="text" name="writer" th:value="${#authentication.principal.user.id}" readonly><br>
         <textarea name="content"></textarea><br>
 
         <input type="submit" value="등록">

@@ -26,13 +26,13 @@ public class UserController {
 
     @RequestMapping("/add-save")
     public String addSave(
-            @RequestParam(value = "email") String email
+            @RequestParam(value = "id") String id
             , @RequestParam(value = "password") String password
             , @RequestParam(value = "name") String name) {
 //            , @RequestParam(value = "grade") int grade) {
 
         // User user = User.build(email, password, name, grade);
-        User user = User.build(email, password, name);
+        User user = User.build(id, password, name);
         userService.add(user);
 
         return "user/add-save";

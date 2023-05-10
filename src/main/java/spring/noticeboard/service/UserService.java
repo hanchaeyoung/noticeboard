@@ -52,8 +52,8 @@ public class UserService {
         }
     }
     /*계정 읽기 email*/
-    public User read(String email) {
-        Optional<UserEntity> optional = userRepository.findByEmail(email);
+    public User read(String id) {
+        Optional<UserEntity> optional = userRepository.findById(id);
         if (optional.isPresent()) {
             UserEntity entity = optional.get();
             return User.build(entity);

@@ -12,7 +12,7 @@ public class User {
 
     private Long userIdx;
 
-    private String email;
+    private String id;
 
     private String password;
 
@@ -29,10 +29,10 @@ public class User {
 //    private Date withdrawTime;
 
     // public static User build(String email, String password, String name, int grade) {
-    public static User build(String email, String password, String name) {
+    public static User build(String id, String password, String name) {
         User user = new User();
 
-        user.setEmail(email);
+        user.setId(id);
         user.setPassword(password);
         user.setName(name);
         // user.setGrade(grade);
@@ -44,7 +44,7 @@ public class User {
         User user = new User();
 
         user.setUserIdx(entity.getUserIdx());
-        user.setEmail(entity.getEmail());
+        user.setId(entity.getId());
         user.setPassword(entity.getPassword());
         user.setName(entity.getName());
         user.setGrade(entity.getGrade());
@@ -56,4 +56,3 @@ public class User {
         return user;
     }
 }
-

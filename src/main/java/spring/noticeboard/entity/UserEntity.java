@@ -16,7 +16,7 @@ public class UserEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long userIdx;
 
-    private String email;
+    private String id;
 
     private String password;
 
@@ -37,7 +37,7 @@ public class UserEntity {
         UserEntity entity = new UserEntity();
 
         entity.setUserIdx(user.getUserIdx());
-        entity.setEmail(user.getEmail());
+        entity.setId(user.getId());
         entity.setPassword(user.getPassword());
         entity.setName(user.getName());
         entity.setGrade(user.getGrade());
