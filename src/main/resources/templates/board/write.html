@@ -11,12 +11,16 @@
 <!-- HEADER -->
 <div th:insert="common/header.html" id="header"></div>
 
-    <form action="/post" method="post">
-        제목 : <input type="text" name="title"> <br>
-        작성자 : <input type="text" name="writer" th:value="${#authentication.principal.user.id}" readonly><br>
-        <textarea name="content"></textarea><br>
+<div class="container">
+    <div style="margin: 100px">
+        <form action="/post" method="post">
+            제목 : <input type="text" name="title" maxlength="95"> <br>
+            작성자 : <input type="text" name="writer" th:value="${#authentication.principal.user.id}" readonly><br>
+            <textarea name="content"></textarea><br>
 
-        <input type="submit" value="등록">
-    </form>
+            <input type="submit" value="등록">
+        </form>
+    </div>
+</div>
 </body>
 </html>

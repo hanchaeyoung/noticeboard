@@ -10,21 +10,52 @@
 <!-- HEADER -->
 <div th:insert="common/header.html" id="header"></div>
 
-<h2 th:text="${boardDto.title}"></h2>
-<span th:inline="text">작성일 : [[${#temporals.format(boardDto.createdDate, 'yyyy-MM-dd HH:mm')}]]</span>
-작성자 : <span th:text="${boardDto.writer}"></span>
-<span th:text="${boardDto.content}"></span>
+<div class="container" style="width: 60%;">
+    <div style="margin: 100px"></div>
+    <table>
+        <tr>
+            <td colspan="2"><h2 th:text="${boardDto.title}"></h2></td>
+        </tr>
 
-<!-- 수정/삭제 -->
-<div th:if="${boardDto.writer == #authentication.principal.user.id}">
-    <a th:href="@{'/post/edit/' + ${boardDto.id}}">
-        <button>수정</button>
-    </a>
+        <tr>
+            <td colspan="2" style="color: #7D7D7D"><span th:inline="text">작성일 : [[${#temporals.format(boardDto.createdDate, 'yyyy-MM-dd HH:mm')}]]</span></td>
+        </tr>
+        <tr>
+            <td colspan="2" style="color: #7D7D7D">작성자 : <span th:text="${boardDto.writer}"></span></td>
+        </tr>
 
-    <form id="delete-form" th:action="@{'/post/' + ${boardDto.id}}" method="post">
-        <input type="hidden" name="_method" value="delete"/>
-        <button id="delete-btn">삭제</button>
-    </form>
+        <tr>
+            <td colspan="2"><span th:text="${boardDto.content}"></span></td>
+        </tr>
+
+        <div th:if="${boardDto.writer == #authentication.principal.user.id}">
+            <tr>
+                <td>
+                    <a th:href="@{'/post/edit/' + ${boardDto.id}}">
+                        <button class="btn btn-default" style="background-color: black; color: white;">수정</button>
+                    </a>
+                </td>
+                <td>
+                    <form id="delete-form" th:action="@{'/post/' + ${boardDto.id}}" method="post">
+                        <input type="hidden" name="_method" value="delete"/>
+                        <button id="delete-btn" class="btn btn-default" style="background-color: black; color: white;">삭제</button>
+                    </form>
+                </td>
+            </tr>
+        </div>
+    </table>
+
+    <!-- 수정/삭제 -->
+<!--    <div th:if="${boardDto.writer == #authentication.principal.user.id}">-->
+<!--        <a th:href="@{'/post/edit/' + ${boardDto.id}}">-->
+<!--            <button class="btn btn-default" style="background-color: black; color: white;">수정</button>-->
+<!--        </a>-->
+
+<!--        <form id="delete-form" th:action="@{'/post/' + ${boardDto.id}}" method="post">-->
+<!--            <input type="hidden" name="_method" value="delete"/>-->
+<!--            <button id="delete-btn" class="btn btn-default" style="background-color: black; color: white;">삭제</button>-->
+<!--        </form>-->
+<!--    </div>-->
 </div>
 
 <!-- 변수 셋팅 -->

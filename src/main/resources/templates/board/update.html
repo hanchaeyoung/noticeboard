@@ -14,8 +14,8 @@
     <input type="hidden" name="_method" value="put"/>
     <input type="hidden" name="id" th:value="${boardDto.id}"/>
 
-    제목 : <input type="text" name="title" th:value="${boardDto.title}"> <br>
-    작성자 : <input type="text" name="writer" th:value="${boardDto.writer}"> <br>
+    제목 : <input type="text" name="title" th:value="${boardDto.title}" maxlength="95"> <br>
+    작성자 : <input type="text" name="writer" th:value="${boardDto.writer}" readonly> <br>
     <textarea name="content" th:text="${boardDto.content}"></textarea><br>
 
     <input type="submit" value="수정">

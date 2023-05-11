@@ -15,20 +15,20 @@
     <div style="margin: 60px"></div>
     <div id="con">
         <div>
-            <div style="text-align: right;">
+            <div style="text-align: left;">
                 <button sec:authorize="isAuthenticated()" class="btn btn-default" style="background-color: black; color: white;" onclick="location.href='http://localhost:8080/post'">글쓰기</button>
             </div>
-            <div sec:authorize="isAuthenticated()">
+            <div sec:authorize="isAuthenticated()" style="text-align: right;">
                 <form action="/board/search" method="GET">
                     <input aria-describedby="helpBlock" name="keyword" type="text" placeholder="검색어를 입력해주세요">
-                    <button style="border: 1px solid black">검색</button>
+                    <button class="btn btn-default" style="background-color: black; color: white;">검색</button>
                 </form>
             </div>
         </div>
         <br>
 
         <div>
-            <table class="table">
+            <table class="table" style="text-align: center">
                 <thead>
                 <tr>
 <!--                    <th class="one wide">번호</th>-->
