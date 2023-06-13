@@ -7,6 +7,7 @@ import lombok.*;
 
 import javax.persistence.MappedSuperclass;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Getter
 @Setter
@@ -22,6 +23,13 @@ public class BoardDto {
     private LocalDateTime createdDate;
     @LastModifiedDate
     private LocalDateTime modifiedDate;
+
+
+    private List<CommentDto> comments;
+
+    public void setComments(List<CommentDto> comments) {
+        this.comments = comments;
+    }
 
     public BoardEntity toEntity(){
         BoardEntity boardEntity = BoardEntity.builder()

@@ -3,13 +3,13 @@ package spring.noticeboard.controller;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import spring.noticeboard.domain.User;
 import spring.noticeboard.dto.BoardDto;
+import spring.noticeboard.dto.CommentDto;
 import spring.noticeboard.service.BoardService;
+import spring.noticeboard.service.CommentService;
 
 import javax.servlet.http.HttpSession;
 import java.util.List;
@@ -22,6 +22,7 @@ public class BoardController {
     private HttpSession httpSession;
 
     private BoardService boardService;
+    private CommentService commentService;
 
     /* 게시글 목록 */
     @GetMapping("/")
@@ -39,6 +40,10 @@ public class BoardController {
     @GetMapping("/post/{no}")
     public String detail(@PathVariable("no") Long no, Model model) {
         BoardDto boardDTO = boardService.getPost(no);
+
+        /* 댓글 데이터 가져오기 */
+        List<CommentDto> comments = commentService.getCommentsByBoardId(no);
+        boardDTO.setComments(comments);
 
         model.addAttribute("boardDto", boardDTO);
         return "board/detail.html";
@@ -113,5 +118,4 @@ public class BoardController {
     public String login(){
         return "account/login";
     }
-
 }
