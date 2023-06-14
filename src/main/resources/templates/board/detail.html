@@ -72,7 +72,7 @@
 
     <hr>
 
-    <div style="margin-top: 100px">
+    <div style="margin-top: 20px">
         <form th:action="@{'/post/' + ${boardDto.id}}" method="post">
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
 
@@ -104,25 +104,6 @@
         <div style="margin-top: 40px"></div>
     </div>
 </div>
-
-<script>
-<!--document.getElementById('delete-btn').addEventListener('click', function() {-->
-<!--    deleteComment(/*commentId를 전달*/);-->
-<!--});-->
-
-<!--function deleteComment(commentId) {-->
-<!--    var boardNo = /*게시글 번호를 가져오는 코드*/;-->
-<!--    fetch('/post/' + boardNo + '/' + commentId, {-->
-<!--        method: 'DELETE'-->
-<!--    }).then(function(response) {-->
-<!--        if (response.ok) {-->
-<!--            // 삭제 성공 시 동작할 코드-->
-<!--        } else {-->
-<!--            // 삭제 실패 시 동작할 코드-->
-<!--        }-->
-<!--    });-->
-<!--}-->
-</script>
 
 <!-- 변수 셋팅 -->
 <script th:inline="javascript">
