@@ -93,7 +93,7 @@ public class BoardController {
     public String update(BoardDto boardDTO) {
         boardService.savePost(boardDTO);
 
-        return "redirect:/";
+        return "redirect:/post/{no}";
     }
 
     /* 게시글 삭제 */

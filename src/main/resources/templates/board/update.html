@@ -18,7 +18,7 @@
 
             <input type="text" name="title" th:value="${boardDto.title}" maxlength="95" class="form-control"> <br>
             <input type="text" name="writer" th:value="${boardDto.writer}" readonly class="form-control"> <br>
-            <textarea name="content" th:text="${boardDto.content}" class="form-control"></textarea><br>
+            <textarea style="height: 500px" name="content" th:text="${boardDto.content}" class="form-control"></textarea><br>
 
             <input type="submit" value="수정" class="btn btn-default" style="background-color: black; color: white;">
         </form>

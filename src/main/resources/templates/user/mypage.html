@@ -14,6 +14,28 @@
 <div id="wrap" class="container" style="width: 60%">
   <div style="margin: 60px"></div>
   <sapn th:text="${#authentication.principal.user.id}"></sapn>님 안녕하세요
+
+  <!-- 게시글 목록 -->
+  <div>
+    <table class="table">
+      <thead>
+      <tr>
+        <th>제목</th>
+        <th>작성일</th>
+        <th>수정</th>
+        <th>삭제</th>
+      </tr>
+      </thead>
+      <tbody>
+      <!-- 게시글 목록을 반복해서 출력 -->
+      <tr th:each="board : ${boardList}">
+        <td th:text="${board.title}"></td>
+        <td th:text="${#dates.format(board.createdDate, 'yyyy-MM-dd HH:mm')}"></td>
+        <td><a th:href="@{/board/edit/{id}(id=${board.id})}">수정</a></td>
+        <td><a th:href="@{/board/delete/{id}(id=${board.id})}">삭제</a></td>
+      </tr>
+      </tbody>
+    </table>
   </div>
 </div>
 

@@ -5,6 +5,27 @@
     <title>Title</title>
     <link rel="stylesheet" href="/bootstrap-5.3.0-alpha3-dist/css/bootstrap.min.css">
     <script src="/bootstrap-5.3.0-alpha3-dist/js/bootstrap.min.js"></script>
+    <style>
+        table {
+            table-layout: fixed;
+            width: 100%;
+        }
+
+        .content-cell {
+            word-wrap: break-word;
+        }
+
+        #header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+        }
+
+        .container {
+            margin-top: 150px;
+        }
+    </style>
 </head>
 <body>
 <!-- HEADER -->
@@ -21,11 +42,15 @@
             <td colspan="2" style="color: #7D7D7D"><span th:inline="text">작성일 : [[${#temporals.format(boardDto.createdDate, 'yyyy-MM-dd HH:mm')}]]</span></td>
         </tr>
         <tr>
-            <td colspan="2" style="color: #7D7D7D">작성자 : <span th:text="${boardDto.writer}"></span></td>
+            <td colspan="2" style="color: #7D7D7D;">작성자 : <span th:text="${boardDto.writer}"></span></td>
         </tr>
 
         <tr>
-            <td colspan="2"><span th:text="${boardDto.content}"></span></td>
+            <td colspan="2" style="height: 30px"></td>
+        </tr>
+
+        <tr>
+            <td colspan="2" class="content-cell"><span th:text="${boardDto.content}"></span></td>
         </tr>
 
         <div th:if="${boardDto.writer == #authentication.principal.user.id}">
@@ -45,33 +70,39 @@
         </div>
     </table>
 
-    <form th:action="@{'/post/' + ${boardDto.id}}" method="post">
-        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
+    <hr>
 
-        <div class="form-group">
-            <input type="text" class="form-control" id="writer" name="writer" th:value="${#authentication.principal.user.id}" readonly>
-        </div>
+    <div style="margin-top: 100px">
+        <form th:action="@{'/post/' + ${boardDto.id}}" method="post">
+            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
 
-        <div class="form-group">
-            <textarea class="form-control" id="content" name="content" rows="3" placeholder="댓글을 작성해주세요." maxlength="990"></textarea>
-        </div>
+            <div class="form-group">
+                <input type="text" class="form-control" id="writer" name="writer" th:value="${#authentication.principal.user.id}" readonly>
+            </div>
 
-        <button type="submit" class="btn btn-primary">댓글 작성</button>
-    </form>
+            <div class="form-group">
+                <textarea class="form-control" id="content" name="content" rows="3" placeholder="댓글을 작성해주세요." maxlength="990"></textarea>
+            </div>
 
-    <h3>댓글 목록</h3>
-    <table>
-        <tr th:each="comment : ${boardDto.comments}">
-            <td th:text="${comment.writer}"></td>
-            <td th:text="${comment.content}" id="comment-input"></td>
-            <td th:if="${comment.writer == #authentication.principal.user.id}">
-                <form th:action="@{'/post/' + ${boardDto.id} + '/' + ${comment.id}}" method="post">
-                    <input type="hidden" name="_method" value="delete"/>
-                    <button class="btn btn-default" style="background-color: black; color: white;">삭제</button>
-                </form>
-            </td>
-        </tr>
-    </table>
+            <button type="submit" class="btn btn-primary">댓글 작성</button>
+        </form>
+
+        <table>
+            <tr th:each="comment : ${boardDto.comments}">
+                <td style="width: 10%" th:text="${comment.writer}"></td>
+                <td style="width: 85%" class="content-cell" th:text="${comment.content}" id="comment-input"></td>
+                <td style="width: 5%; text-align: right;" th:if="${comment.writer == #authentication.principal.user.id}">
+                    <form th:action="@{'/post/' + ${boardDto.id} + '/' + ${comment.id}}" method="post">
+                        <input type="hidden" name="_method" value="delete"/>
+                        <!--<button class="btn btn-default" style="background-color: black; color: white;">삭제</button>-->
+                        <button class="btn btn-default" style="width: 58px; height: 30px; background-color: black; color: white; padding: 5px;">삭제</button>
+                    </form>
+                </td>
+            </tr>
+        </table>
+
+        <div style="margin-top: 40px"></div>
+    </div>
 </div>
 
 <script>
