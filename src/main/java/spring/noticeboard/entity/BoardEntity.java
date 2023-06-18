@@ -3,11 +3,15 @@ package spring.noticeboard.entity;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.List;
 
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
 @Table(name = "board_entity")
 public class BoardEntity extends TimeEntity {
+
+    @OneToMany(mappedBy = "board", cascade = CascadeType.ALL, orphanRemoval = false)
+    private List<CommentEntity> comments;
 
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)

@@ -58,7 +58,7 @@
                 </tr>
                 </tbody>
             </table>
-            <div>
+            <div style="text-align: center">
                 <span th:each="pageNum : ${pageList}" th:inline="text">
                     <a th:href="@{'/?page=' + ${pageNum}}">[[${pageNum}]]</a>
                 </span>

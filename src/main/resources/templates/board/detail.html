@@ -53,22 +53,23 @@
             <td colspan="2" class="content-cell"><span th:text="${boardDto.content}"></span></td>
         </tr>
 
-        <div th:if="${boardDto.writer == #authentication.principal.user.id}">
-            <tr>
-                <td>
-                    <a th:href="@{'/post/edit/' + ${boardDto.id}}">
-                        <button class="btn btn-default" style="background-color: black; color: white;">수정</button>
-                    </a>
-                </td>
-                <td>
-                    <form id="delete-form" th:action="@{'/post/' + ${boardDto.id}}" method="post">
-                        <input type="hidden" name="_method" value="delete"/>
-                        <button id="delete-btn" class="btn btn-default" style="background-color: black; color: white;">삭제</button>
-                    </form>
-                </td>
-            </tr>
-        </div>
+        <tr>
+            <td colspan="2" style="height: 30px"></td>
+        </tr>
     </table>
+
+    <div th:if="${boardDto.writer == #authentication.principal.user.id}">
+        <div style="display: flex;">
+            <a th:href="@{'/post/edit/' + ${boardDto.id}}">
+                <button class="btn btn-default" style="background-color: black; color: white; flex: 1;">수정</button>
+            </a>&nbsp;&nbsp;
+            <form id="delete-form" th:action="@{'/post/' + ${boardDto.id}}" method="post">
+                <input type="hidden" name="_method" value="delete"/>
+                <button id="delete-btn" class="btn btn-default" style="background-color: black; color: white; flex: 1;">삭제</button>
+            </form>
+        </div>
+    </div>
+
 
     <hr>
 
@@ -90,12 +91,12 @@
         <table>
             <tr th:each="comment : ${boardDto.comments}">
                 <td style="width: 10%" th:text="${comment.writer}"></td>
-                <td style="width: 85%" class="content-cell" th:text="${comment.content}" id="comment-input"></td>
-                <td style="width: 5%; text-align: right;" th:if="${comment.writer == #authentication.principal.user.id}">
+                <td style="width: 83%" class="content-cell" th:text="${comment.content}" id="comment-input"></td>
+                <td style="width: 7%; text-align: right;" th:if="${comment.writer == #authentication.principal.user.id}">
                     <form th:action="@{'/post/' + ${boardDto.id} + '/' + ${comment.id}}" method="post">
                         <input type="hidden" name="_method" value="delete"/>
-                        <!--<button class="btn btn-default" style="background-color: black; color: white;">삭제</button>-->
-                        <button class="btn btn-default" style="width: 58px; height: 30px; background-color: black; color: white; padding: 5px;">삭제</button>
+                        <button class="btn btn-default" style="background-color: black; color: white;">삭제</button>
+<!--                        <button class="btn btn-default" style="width: 58px; height: 30px; background-color: black; color: white; padding: 5px;">삭제</button>-->
                     </form>
                 </td>
             </tr>
